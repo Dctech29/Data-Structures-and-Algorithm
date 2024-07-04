@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+</head>
+
+<body>
+
+    <script>
+        class Graph {
+            constructor() {
+                this.data = {}
+            }
+            addVertex(val) {
+                if (!this.data[val]) {
+                    this.data[val] = [];
+                }
+            }
+            addNode(v1, v2) {
+                if (!this.data[v1]) {
+                    this.addVertex(v1)
+                }
+                if (!this.data[v2]) {
+                    this.addVertex(v2)
+                }
+                if (!this.data[v1].includes(v2)) {
+                    this.data[v1].push(v2)
+                }
+                if (!this.data[v2].includes(v1)) {
+                    this.data[v2].push(v1)
+                }
+            }
+            removeEdge(v1, v2) {
+                if (this.data[v1]) {
+                    this.data[v1] = this.data[v1].filter((item) => {
+                        return item !== v2;
+                    })
+                }
+                if (this.data[v2]) {
+                    this.data[v2] = this.data[v2].filter((item) => {
+                        return item !== v1;
+                    })
+                }
+            }
+            removeVertex(val) {
+                if (!this.data[val]) {
+                    return;
+                }
+                this.data[val].forEach(item => {
+                    this.removeEdge(item, val)
+                });
+                delete this.data[val];
+            }
+        }
+
+
+        let graph1 = new Graph();
+        graph1.addVertex("a")
+        graph1.addVertex("b")
+        graph1.addVertex("c")
+        graph1.addVertex("d")
+        graph1.addNode("a", "b")
+        graph1.addNode("a", "d")
+        graph1.addNode("b", "d")
+        graph1.addNode("b", "c")
+            // graph1.removeEdge("a", "b")
+        graph1.removeVertex("a")
+        console.log(graph1)
+    </script>
+
+</body>
+
+</html>

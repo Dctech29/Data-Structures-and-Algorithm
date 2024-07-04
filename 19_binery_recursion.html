@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binery Recursion</title>
+</head>
+
+<body>
+    <script>
+        let data = [1, 2, 3, 5, 6, 8, 9, 12, 23, 25, 26, 32, 34, 35, 39, 40];
+
+        function search(arr, find, start, end) {
+            // debugger
+            let mid = Math.floor((start + end) / 2);
+            if (start > end) {
+                return -1;
+            }
+            if (arr[mid] === find) {
+                return mid;
+            } else if (arr[mid] < find) {
+                start = mid + 1;
+                return search(arr, find, start, end)
+            } else {
+                end = mid - 1;
+                return search(arr, find, start, end)
+            }
+        }
+
+        let val = search(data, 25, 0, data.length - 1);
+        console.log(val)
+        console.log(data[val])
+    </script>
+</body>
+
+</html>

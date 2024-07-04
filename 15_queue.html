@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Data Structure</title>
+</head>
+
+<body>
+    <script>
+        const data = [];
+        let CurrenctSize = data.length;
+        let MaxSize = 5;
+
+        function enqueue() {
+            let val = document.getElementById("enqueue").value;
+            if (!val) {
+                return;
+            }
+            if (CurrenctSize < MaxSize) {
+                data[CurrenctSize] = parseInt(val);
+                CurrenctSize++
+            } else {
+                console.log("Queue is Full")
+            }
+        }
+
+        function dequeue() {
+            if (CurrenctSize > 0) {
+                for (let i = 0; i < data.length; i++) {
+                    data[i] = data[i + 1]
+                }
+                CurrenctSize--;
+                data.length = CurrenctSize;
+            } else {
+                console.log("Queue is Empty")
+            }
+        }
+
+        function display() {
+            console.log(data)
+        }
+
+        function front() {
+            if (CurrenctSize > 0) {
+                console.log(data[0])
+            } else {
+                console.log("Queue is Empty")
+            }
+        }
+
+        function rear() {
+            if (CurrenctSize > 0) {
+                console.log(data[CurrenctSize - 1])
+            } else {
+                console.log("Queue is Empty")
+            }
+        }
+    </script>
+
+    <main>
+        <h1>Queue With Input And Buttons</h1>
+        <input type="text" placeholder="Enqueue Here" id="enqueue">
+        <button onclick="enqueue()">Enqueue</button>
+        <button onclick="dequeue()">Dequeue</button>
+        <button onclick="display()">Display</button>
+        <button onclick="front()">Front</button>
+        <button onclick="rear()">Rear</button>
+    </main>
+</body>
+
+</html>

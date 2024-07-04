@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion</title>
+</head>
+
+<body>
+    <script>
+        const getFectorial = (x) => {
+            if (x === 0) {
+                return 1
+            }
+            // return x * getFectorial(x - 1)
+            return x;
+        }
+        console.log(getFectorial(5) * getFectorial(5 - 1) * getFectorial(4 - 1) * getFectorial(3 - 1) * getFectorial(2 - 1) * getFectorial(1 - 1))
+    </script>
+</body>
+
+</html>

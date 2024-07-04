@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Head And Tail Recursion</title>
+</head>
+
+<body>
+
+    <script>
+        // function kijai() {
+        //     if (true) {
+        //         let data = 20;
+        //         console.log(data)
+        //     } else {
+        //         console.log(object)
+        //     }
+        // }
+
+        // function wale() {
+        //     kijai()
+        // }
+
+        // function khatu() {
+        //     wale()
+        // }
+
+        // function syam() {
+        //     khatu()
+        // }
+
+        // function ram() {
+        //     syam()
+        // }
+
+        // ram()
+
+        function test(x) {
+            // console.log(x) Head Recursion
+            if (x > 0) {
+                test(x - 1)
+            }
+            // console.log(x) tail recursion
+        }
+        test(5)
+    </script>
+
+
+</body>
+
+</html>

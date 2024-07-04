@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>indirect Recursion</title>
+</head>
+
+<body>
+    <script>
+        let money = 100;
+        let apple = 0;
+        const getApple = (x) => {
+            console.log("I have " + x + " Money And " + apple + " apples")
+            if (x > 0) {
+                buyapple(x)
+            }
+        }
+        const buyapple = (x) => {
+            apple++
+            getApple(x - 10)
+        }
+
+        getApple(money)
+    </script>
+</body>
+
+</html>

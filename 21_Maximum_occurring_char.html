@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximum occurring Character in String</title>
+</head>
+
+<body>
+    <script>
+        function maxChar(str) {
+            obj = {};
+            let i = 0;
+            let result = "";
+            while (i < str.length) {
+                obj[str[i]] = (obj[str[i]] || 0) + 1;
+
+                if (obj[str[i]] > obj[result] || !result) {
+                    result = str[i]
+                }
+
+                i++;
+
+            }
+            return result;
+        }
+
+        console.log(maxChar("hello"))
+    </script>
+</body>
+
+</html>

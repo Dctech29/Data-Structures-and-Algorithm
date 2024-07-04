@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liniar Search in Array</title>
+</head>
+
+<body>
+    <script>
+        const arr = [45, 62, 85, 49, 79, 95, 10, 52, 415, 56, 85, 45, 69, 58, 49, 10, 76];
+        console.log(arr);
+
+        function checkIndex() {
+            let index = [];
+            let find = document.getElementById("value").value;
+            for (let i = 0; i < arr.length - 1; i++) {
+                if (arr[i] === parseInt(find)) {
+                    index.push(i)
+                }
+            }
+            console.log(index)
+        }
+    </script>
+    <input type="text" id="value" placeholder="Enter Value">
+    <button onclick="checkIndex()">Check</button>
+</body>
+
+</html>

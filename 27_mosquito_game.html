@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosquito hit Simple PC Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .gameboard {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            background-color: #E9C46A;
+            height: 100vh;
+        }
+
+        .playground {
+            margin: 20px;
+            position: relative;
+            background-color: #E76F51;
+            height: 600px;
+            width: 600px;
+            float: left;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .controls {
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: #36BA98;
+            color: white;
+            padding: 10px;
+            border: 0px;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        button:active {
+            background-color: #3d8e7b;
+        }
+
+        .mosquito {
+            position: absolute;
+            height: 80px;
+            display: none;
+        }
+
+        *::selection {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .mosquito:active {
+            filter: saturate(100);
+        }
+
+        .liveScore {
+            color: rgba(255, 255, 255, 0.263);
+            font-size: 15rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gameboard">
+        <div class="playground">
+
+            <h2 class="liveScore">0</h2>
+
+            <img class="mosquito" id="mosquito" onclick="hitMosquito()" src="https://i.ibb.co/34nTyV5/png-transparent-mosquito-insect-pest-fly-wing-line-pollinator-thumbnail-removebg-preview.png">
+        </div>
+        <div class="controls">
+            <h3>
+                <span>Max Score:</span>
+                <span id="maxhit">0</span>
+            </h3>
+
+            <button onclick="startGame()">Start Game</button>
+        </div>
+    </div>
+    <script>
+        let mosquito = document.getElementById("mosquito");
+        let totalcount = 0;
+        let maxScore = 0;
+        let isGameStarted = false;
+        let func_started = false;
+
+        function startGame() {
+            if (!func_started) {
+                func_started = true
+                totalcount = 0;
+                document.querySelector(".liveScore").innerHTML = 0;
+                document.querySelector(".mosquito").style.display = "block"
+                let time = setInterval(() => {
+                    let h = Math.floor(Math.random() * 500 + 1);
+                    let w = Math.floor(Math.random() * 500 + 1);
+                    mosquito.style.top = `${h}px`;
+                    mosquito.style.left = `${w}px`;
+                    document.querySelector("#maxhit").innerHTML = maxScore;
+                }, 1000)
+                setTimeout(() => {
+                    clearInterval(time);
+                    if (maxScore < totalcount) {
+                        maxScore = totalcount;
+                    }
+                    document.querySelector(".mosquito").style.display = "none"
+                    func_started = false;
+                }, 10000)
+                isGameStarted = true;
+            }
+        }
+
+        function hitMosquito() {
+            if (isGameStarted) {
+                totalcount++;
+                document.querySelector(".liveScore").innerHTML = totalcount;
+                if (maxScore < totalcount) {
+                    maxScore = totalcount
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

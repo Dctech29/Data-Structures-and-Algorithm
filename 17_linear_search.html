@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let data = [1, 2, 4, 5, 7, 85, 95, 46, 84, 12, 15, 46, 75, 18, 95];
+
+        function search() {
+            let val = document.getElementById("linear-search").value;
+            for (let i = 0; i < data.length; i++) {
+                if (parseInt(val) == data[i]) {
+                    console.log(i)
+                    break;
+                }
+                console.log("run")
+            }
+        }
+    </script>
+    <input type="text" placeholder="enter value" id="linear-search">
+    <button onclick="search()">Search</button>
+</body>
+
+</html>

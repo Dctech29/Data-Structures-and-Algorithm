@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree</title>
+</head>
+
+<body>
+    <script>
+        class Node {
+            constructor(val) {
+                this.value = val;
+                this.left = null;
+                this.right = null;
+            }
+        }
+        class BSTree {
+            constructor() {
+                this.root = null;
+            }
+            makeTree(val) {
+                let newNode = new Node(val);
+                if (this.root === null) {
+                    this.root = newNode;
+                } else {
+                    this.insertNode(this.root, newNode)
+                }
+            }
+            insertNode(root, newNode) {
+                if (root.value > newNode.value) {
+                    if (root.left === null) {
+                        root.left = newNode;
+                    } else {
+                        this.insertNode(root.left, newNode)
+                    }
+                } else {
+                    if (root.right === null) {
+                        root.right = newNode;
+                    } else {
+                        this.insertNode(root.right, newNode)
+                    }
+                }
+            }
+            search(root, val) {
+                if (root === null) {
+                    return false;
+                } else if (root.value === val) {
+                    return true;
+                } else if (root.value > val) {
+                    return this.search(root.left, val)
+                } else if (root.value < val) {
+                    return this.search(root.right, val)
+                }
+            }
+
+            DFS_preorder(root) {
+                if (root) {
+                    console.log(root)
+                    this.DFS_preorder(root.left)
+                    this.DFS_preorder(root.right)
+                }
+            }
+            DFS_inorder(root) {
+                if (root) {
+                    this.DFS_inorder(root.left)
+                    console.log(root)
+                    this.DFS_inorder(root.right)
+                }
+            }
+            DFS_postorder(root) {
+                if (root) {
+                    this.DFS_postorder(root.left)
+                    this.DFS_postorder(root.right)
+                    console.log(root)
+                }
+            }
+
+            BFS() {
+                let queue = [];
+                queue.push(this.root)
+                while (queue.length) {
+                    let current = queue.shift();
+                    if (current.left) {
+                        queue.push(current.left)
+                    }
+                    if (current.right) {
+                        queue.push(current.right)
+                    }
+                    console.log(current.value)
+                }
+            }
+            min(root) {
+                if (root.left) {
+                    return this.min(root.left);
+                } else {
+                    return root.value;
+                }
+            }
+
+            max(root) {
+                if (root.right) {
+                    return this.max(root.right);
+                } else {
+                    return root.value;
+                }
+            }
+
+            removeData(value) {
+                this.root = this.deleteNode(this.root, value);
+
+            }
+
+            deleteNode(root, value) {
+                if (root === null) {
+                    return null;
+                }
+
+                if (value < root.value) {
+                    root.left = this.deleteNode(root.left, value);
+                } else if (value > root.value) {
+                    root.right = this.deleteNode(root.right, value);
+                } else {
+                    if (!root.left && !root.right) {
+                        return null;
+                    } else if (!root.left) {
+                        return root.right
+                    } else if (!root.right) {
+                        return root.left
+                    }
+
+                    root.value = this.min(root.right);
+                    root.right = this.deleteNode(root.right, root.value)
+                }
+                return root;
+            }
+        }
+
+
+        const bst = new BSTree()
+        bst.makeTree(20)
+        bst.makeTree(10)
+        bst.makeTree(30)
+        bst.makeTree(40)
+        bst.makeTree(25)
+        bst.makeTree(5)
+            // console.log(bst.search(bst.root, 5))
+            // bst.DFS_preorder(bst.root)
+            // bst.DFS_inorder(bst.root)
+            // bst.DFS_postorder(bst.root)
+            // bst.BFS()
+            // console.log(bst.min(bst.root))
+            // console.log(bst.max(bst.root))
+        bst.removeData(20)
+        console.log(bst)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Two Array</title>
+</head>
+
+<body>
+    <script>
+        const data1 = [89, 78, 74];
+        const data2 = [75, 84, 96];
+        console.log(data1)
+        console.log(data2)
+        const mergedArr = [];
+        for (let i = 0; i <= data1.length; i++) {
+            mergedArr[i] = data1[i];
+            if (data1.length == i) {
+                for (let j = 0; j < data2.length; j++) {
+                    mergedArr[i + j] = data2[j];
+                }
+            }
+        }
+        console.log(mergedArr)
+            // code step by step channel se js DSA ka course suru kiya tha, unhone is wale ko kafi simple trike se btaya hai mene thodi si hard approch follow ki hai, isme mene nested for loop ka use kiya hai, unhone dono ko 3rd array me dalne ke liye direct 2 alag alag for loop bna liye the
+    </script>
+</body>
+
+</html>

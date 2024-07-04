@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Traversing And Accessing</title>
+</head>
+
+<body>
+    <script>
+        let data = [56, 74, 84, 85, 71, 62, 46, 29];
+        // for (let i = 0; i <= data.length - 1; i++) {
+        //     document.write(data[i])
+        //     document.write("<br>")
+        // }
+
+        function check() {
+            let value = document.getElementById("position").value
+            if (value <= data.length - 1 && value >= 0) {
+                console.log(data[value])
+            } else {
+                console.log("Please Enter A valid Value")
+            }
+        }
+    </script>
+    <label for="position">Position</label>
+    <input type="text" name="position" id="position">
+    <button onclick="check()">Checek</button>
+</body>
+
+</html>

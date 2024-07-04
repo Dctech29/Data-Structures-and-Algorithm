@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Data Structure</title>
+</head>
+
+<body>
+    <script>
+        const data = [];
+        let Max = 5;
+        let CurrentLength = data.length;
+
+        function push() {
+            let val = document.querySelector("#add").value
+            if (CurrentLength >= Max) {
+                console.error("Stack Size Exceeded! You Can't Add " + val)
+            } else {
+                data[CurrentLength] = val;
+                CurrentLength++
+                document.querySelector("#add").value = "";
+                Display()
+            }
+        }
+
+        function pop() {
+            if (CurrentLength > 0) {
+                CurrentLength--
+                data.length = CurrentLength;
+                console.log("Removed One Value from Stack")
+                Display()
+            } else {
+                console.error("Stack is Already Empty")
+            }
+        }
+
+        function Display() {
+            let elem = document.querySelector("#display_id");
+            elem.innerHTML = ""
+            for (let i = 0; i < CurrentLength; i++) {
+                elem.append(data[i], " ")
+
+            }
+        }
+    </script>
+    <input type="text" id="add" placeholder="Add item in stack">
+    <button onclick="push()">Add</button>
+    <button onclick="pop()">Remove</button>
+    <button onclick="Display()">Display</button>
+    <div id="display_id"></div>
+</body>
+
+</html>

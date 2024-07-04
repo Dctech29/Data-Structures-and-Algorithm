@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to check String is An Anagram or not</title>
+</head>
+
+<body>
+    <script>
+        function checkAnagram(str1, str2) {
+            str1 = str1.split("");
+            str2 = str2.split("");
+            let obj = {};
+            if (str1.length != str2.length) {
+                return false;
+            }
+            for (let i = 0; i < str1.length; i++) {
+                obj[str1[i]] = (obj[str1[i]] || 0) + 1;
+            }
+
+            for (ch of str2) {
+                if (!obj[ch]) {
+                    return false
+                }
+                obj[ch]--
+            }
+            return true;
+        }
+
+        console.log(checkAnagram("deepak", "kapeed"))
+    </script>
+</body>
+
+</html>
